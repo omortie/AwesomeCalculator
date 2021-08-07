@@ -12,21 +12,27 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    enum Amaliat {
+        Jam,
+        Zarb,
+        Taghsim,
+        Tafrigh
+    };
+
+    MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
 private slots:
-    void on_pushButton_2_clicked();
-
     void adadClicked(int);
 
-    void on_jamButton_clicked();
-
     void on_calcButton_clicked();
+
+    void operatorClicked(int);
 
 private:
     Ui::MainWindow* ui;
 
     bool isJamClicked = false;
+    Amaliat currentAmaliat;
 };
 #endif // MAINWINDOW_H

@@ -47,7 +47,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="operatorLabel">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -57,7 +57,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>+</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="resultLabel">
@@ -245,8 +245,11 @@
     <property name="text">
      <string>+</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">operatorGroup</string>
+    </attribute>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="tafrighButton">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -258,8 +261,11 @@
     <property name="text">
      <string>-</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">operatorGroup</string>
+    </attribute>
    </widget>
-   <widget class="QPushButton" name="pushButton_12">
+   <widget class="QPushButton" name="taghsimButton">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -271,8 +277,11 @@
     <property name="text">
      <string>/</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">operatorGroup</string>
+    </attribute>
    </widget>
-   <widget class="QPushButton" name="pushButton_13">
+   <widget class="QPushButton" name="zarbButton">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -284,6 +293,9 @@
     <property name="text">
      <string>*</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">operatorGroup</string>
+    </attribute>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -302,5 +314,6 @@
  <connections/>
  <buttongroups>
   <buttongroup name="adadGroup"/>
+  <buttongroup name="operatorGroup"/>
  </buttongroups>
 </ui>

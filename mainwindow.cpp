@@ -7,17 +7,18 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    ui->jamButton->setProperty("amaliat", Jam);
+    ui->tafrighButton->setProperty("amaliat", Tafrigh);
+    ui->zarbButton->setProperty("amaliat", Zarb);
+    ui->taghsimButton->setProperty("amaliat", Taghsim);
+
     connect(ui->adadGroup, SIGNAL(buttonClicked(int)), this, SLOT(adadClicked(int)));
+    connect(ui->operatorGroup, SIGNAL(buttonClicked(int)), this, SLOT(operatorClicked(int)));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::on_pushButton_2_clicked()
-{
-    ui->aEdit->setText(ui->pushButton_2->text());
 }
 
 void MainWindow::adadClicked(int index)
@@ -29,20 +30,39 @@ void MainWindow::adadClicked(int index)
     }
 }
 
-void MainWindow::on_jamButton_clicked()
-{
-    isJamClicked = true;
-}
-
 void MainWindow::on_calcButton_clicked()
 {
     int a = ui->aEdit->text().toInt();
     int b = ui->bEdit->text().toInt();
 
-    int result = a + b;
+    int result = 0;
+    switch (currentAmaliat) {
+    case Jam:
+        result = a + b;
+        break;
+    case Zarb:
+        result = a * b;
+        break;
+    case Tafrigh:
+        result = a - b;
+        break;
+    case Taghsim:
+        result = a / b;
+        break;
+    }
+
     ui->resultLabel->setText(QString::number(result));
 
     isJamClicked = false;
     ui->aEdit->setText("");
     ui->bEdit->setText("");
+}
+
+void MainWindow::operatorClicked(int index)
+{
+    ui->operatorLabel->setText(ui->operatorGroup->button(index)->text());
+
+    currentAmaliat = static_cast<Amaliat>(ui->operatorGroup->button(index)->property("amaliat").toInt());
+
+    isJamClicked = true;
 }
