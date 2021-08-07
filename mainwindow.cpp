@@ -51,7 +51,7 @@ void MainWindow::on_calcButton_clicked()
         break;
     }
 
-    ui->resultLabel->setText(QString::number(result));
+    ui->resultLabel->display(QString::number(result));
 
     isJamClicked = false;
     ui->aEdit->setText("");
