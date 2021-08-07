@@ -23,19 +23,20 @@ MainWindow::~MainWindow()
 
 void MainWindow::adadClicked(int index)
 {
-    if (isJamClicked) {
-        ui->bEdit->setText(ui->adadGroup->button(index)->text());
-    } else {
-        ui->aEdit->setText(ui->adadGroup->button(index)->text());
-    }
+    ui->aEdit->setText(ui->aEdit->text() + ui->adadGroup->button(index)->text());
 }
 
 void MainWindow::on_calcButton_clicked()
 {
-    int a = ui->aEdit->text().toInt();
-    int b = ui->bEdit->text().toInt();
+    QStringList inputs = ui->aEdit->text().split(" ");
+    if (inputs.size() < 2) {
+        return;
+    }
 
-    int result = 0;
+    b = ui->aEdit->text().split(" ").at(2).toDouble();
+
+    double result
+        = 0;
     switch (currentAmaliat) {
     case Jam:
         result = a + b;
@@ -53,16 +54,17 @@ void MainWindow::on_calcButton_clicked()
 
     ui->resultLabel->display(QString::number(result));
 
-    isJamClicked = false;
-    ui->aEdit->setText("");
-    ui->bEdit->setText("");
+    isOperatorClicked = false;
+    ui->aEdit->clear();
 }
 
 void MainWindow::operatorClicked(int index)
 {
-    ui->operatorLabel->setText(ui->operatorGroup->button(index)->text());
+    a = ui->aEdit->text().toDouble();
+
+    ui->aEdit->setText(ui->aEdit->text() + " " + ui->operatorGroup->button(index)->text() + " ");
 
     currentAmaliat = static_cast<Amaliat>(ui->operatorGroup->button(index)->property("amaliat").toInt());
 
-    isJamClicked = true;
+    isOperatorClicked = true;
 }

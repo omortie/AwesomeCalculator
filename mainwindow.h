@@ -32,7 +32,8 @@ private slots:
 private:
     Ui::MainWindow* ui;
 
-    bool isJamClicked = false;
+    bool isOperatorClicked = false;
     Amaliat currentAmaliat;
+    double a = 0, b = 0;
 };
 #endif // MAINWINDOW_H
